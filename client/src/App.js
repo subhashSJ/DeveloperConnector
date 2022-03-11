@@ -5,7 +5,8 @@ import Navbar from "./components/layout/Navbar";
 import "./App.css";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-
+//Redux
+import { Provider } from "react-redux";
 const App = () => (
   <Router>
     <>
