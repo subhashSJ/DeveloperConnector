@@ -20,9 +20,9 @@ if (localStorage.token) {
 }
 
 const App = () => {
-  useEffect(() =>{
-    store.dispatch(loadUser())
-  }, [])
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
 
   //Adding [] in useEffect() means running useEffect only once
   return (
@@ -38,8 +38,8 @@ const App = () => {
             <Routes>
               <Route exact path="/register" element={<Register />} />
               <Route exact path="/login" element={<Login />} />
-              <Route exact path="/dashboard" element={<PrivateRoute/>}>
-                <Route exaxt path="/dashboard" element={<Dashboard/>} />
+              <Route exact path="/dashboard" element={<PrivateRoute />}>
+                <Route exact path="/dashboard" element={<Dashboard />} />
               </Route>
             </Routes>
           </section>
