@@ -9,11 +9,15 @@ import Alert from "./components/layout/Alert";
 import setAuthToken from "./utils/setAuthToken";
 import Dashboard from "./components/dashboard/Dashboard";
 import PrivateRoute from "./components/routing/PrivateRoute";
+import CreateProfile from "./components/profile_forms/CreateProfile";
+import EditProfile from "./components/profile_forms/EditProfile";
+import AddExperience from "./components/profile_forms/AddExperience";
 
 //Redux
 import { Provider } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/auth";
+import AddEducation from "./components/profile_forms/AddEducation";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -40,6 +44,37 @@ const App = () => {
               <Route exact path="/login" element={<Login />} />
               <Route exact path="/dashboard" element={<PrivateRoute />}>
                 <Route exact path="/dashboard" element={<Dashboard />} />
+              </Route>
+              <Route exact path="/dashboard" element={<PrivateRoute />}>
+                <Route exact path="/dashboard" element={<Dashboard />} />
+              </Route>
+              <Route exact path="/create-profile" element={<PrivateRoute />}>
+                <Route
+                  exact
+                  path="/create-profile"
+                  element={<CreateProfile />}
+                />
+              </Route>
+              <Route exact path="/edit-profile" element={<PrivateRoute />}>
+                <Route
+                  exact
+                  path="/edit-profile"
+                  element={<EditProfile />}
+                />
+              </Route>
+              <Route exact path="/add-experience" element={<PrivateRoute />}>
+                <Route
+                  exact
+                  path="/add-experience"
+                  element={<AddExperience />}
+                />
+              </Route>
+              <Route exact path="/add-education" element={<PrivateRoute />}>
+                <Route
+                  exact
+                  path="/add-education"
+                  element={<AddEducation />}
+                />
               </Route>
             </Routes>
           </section>
