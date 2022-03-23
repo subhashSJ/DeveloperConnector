@@ -27,8 +27,8 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     }
   };
 
-  if(isAuthenticated){
-    return <Navigate to="/dashboard" />
+  if (isAuthenticated) {
+    return <Navigate to="/dashboard" />;
   }
 
   return (
@@ -104,3 +104,12 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { setAlert, register })(Register);
+
+
+/* NOTE: PropTypes is React's internal mechanism for adding type 
+         checking to components. React components use a special 
+         property named propTypes to set up type checking. When 
+         props are passed to a React component, they are checked 
+         against the type definitions configured in the propTypes 
+         property.
+*/

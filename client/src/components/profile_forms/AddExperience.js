@@ -17,8 +17,7 @@ const AddExperience = ({ addExperience }) => {
     description: "",
   });
 
-  const { company, title, location, from, to, current, description } =
-    formData;
+  const { company, title, location, from, to, current, description } = formData;
 
   const [toDateDisabled, toggleDisabled] = useState(false);
 
@@ -101,6 +100,7 @@ const AddExperience = ({ addExperience }) => {
             value={to}
             disabled={toDateDisabled ? "disabled" : ""}
             onChange={(e) => onChange(e)}
+            required={!current}
           />
         </div>
         <div class="form-group">

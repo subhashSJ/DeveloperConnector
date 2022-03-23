@@ -90,7 +90,7 @@ const AddEducation = ({ addEducation }) => {
                 toggleDisabled(!toDateDisabled);
               }}
             />{" "}
-            Current Job
+            Current School / Bootcamp
           </p>
         </div>
         <div class="form-group">
@@ -101,6 +101,7 @@ const AddEducation = ({ addEducation }) => {
             value={to}
             disabled={toDateDisabled ? "disabled" : ""}
             onChange={(e) => onChange(e)}
+            required={!current}
           />
         </div>
         <div class="form-group">
