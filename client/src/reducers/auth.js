@@ -45,6 +45,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         token: null,
+        user:null,
         isAuthenticated: false,
         loading: false,
       };

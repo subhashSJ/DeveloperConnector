@@ -49,10 +49,9 @@ export default function (state = initialState, action) {
       return {
         ...state,
         profile: null,
-        profiles: [],
         repos: [],
         error: {},
-        loading: true,
+        loading: false,
       };
 
     default:
