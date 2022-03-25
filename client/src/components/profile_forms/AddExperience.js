@@ -75,6 +75,7 @@ const AddExperience = ({ addExperience }) => {
             name="from"
             value={from}
             onChange={(e) => onChange(e)}
+            required
           />
         </div>
         <div class="form-group">
