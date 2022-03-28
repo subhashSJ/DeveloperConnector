@@ -3,29 +3,37 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import { getProfileById } from "../../actions/profile";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
 import ProfileExperience from "./ProfileExperience";
 import ProfileEducation from "./ProfileEducation";
 import ProfileGithub from "./ProfileGithub";
 
-const Profile = ({ getProfileById, profile: { profile, loading }, auth }) => {
+const Profile = ({
+  getProfileById,
+  profile: { profile, loading, error },
+  auth,
+}) => {
   const { id } = useParams();
 
   useEffect(() => {
     getProfileById(id);
   }, [getProfileById, id]);
- 
+
+  const navigate = useNavigate();
+
   return (
     <>
-      {profile === null || loading ? (
+      {Object.keys(error).length > 0 ? (
+        navigate(-1)
+      ) : profile === null || loading ? (
         <Spinner />
       ) : (
         <>
-          <Link to="/profiles" className="btn btn-light">
-            Back To profiles
-          </Link>
+          <button onClick={() => navigate(-1)} className="btn btn-light">
+            Back
+          </button>
           {auth.isAuthenticated &&
             auth.loading === false &&
             auth.user._id === profile.user._id && (
@@ -38,23 +46,31 @@ const Profile = ({ getProfileById, profile: { profile, loading }, auth }) => {
             <ProfileAbout profile={profile} />
             <div className="profile-exp bg-white p-2">
               <h2 className="text-primary">Experience</h2>
-              {profile.experience.length > 0 ? (<>
-                {profile.experience.map((exp) => (
-                  <ProfileExperience key={exp._id} experience={exp} />  
-                ))}
-              </>) : (<h4>No experience credentials</h4>)}
+              {profile.experience.length > 0 ? (
+                <>
+                  {profile.experience.map((exp) => (
+                    <ProfileExperience key={exp._id} experience={exp} />
+                  ))}
+                </>
+              ) : (
+                <h4>No experience credentials</h4>
+              )}
             </div>
 
             <div className="profile-edu bg-white p-2">
               <h2 className="text-primary">Education</h2>
-              {profile.education.length > 0 ? (<>
-                {profile.education.map((edu) => (
-                  <ProfileEducation key={edu._id} education={edu} />  
-                ))}
-              </>) : (<h4>No education credentials</h4>)}
+              {profile.education.length > 0 ? (
+                <>
+                  {profile.education.map((edu) => (
+                    <ProfileEducation key={edu._id} education={edu} />
+                  ))}
+                </>
+              ) : (
+                <h4>No education credentials</h4>
+              )}
             </div>
             {profile.githubusername && (
-              <ProfileGithub username={profile.githubusername}/>
+              <ProfileGithub username={profile.githubusername} />
             )}
           </div>
         </>

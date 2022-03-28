@@ -20,8 +20,8 @@ export const getCurrentProfile = () => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-      dispatch({ type: CLEAR_PROFILE });
-      
+    dispatch({ type: CLEAR_PROFILE });
+
     dispatch({
       type: PROFILE_ERROR,
       payload: { msg: err.response.data.msg, status: err.response.status },
@@ -50,6 +50,8 @@ export const getProfiles = () => async (dispatch) => {
 
 // Get profile by ID
 export const getProfileById = (userId) => async (dispatch) => {
+  dispatch({ type: CLEAR_PROFILE });
+
   try {
     const res = await axios.get(`/api/profile/user/${userId}`);
 
@@ -58,6 +60,8 @@ export const getProfileById = (userId) => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
+
+    dispatch(setAlert("Profile Not Found", "danger"));
     dispatch({
       type: PROFILE_ERROR,
       payload: { msg: err.response.data.msg, status: err.response.status },
@@ -238,7 +242,7 @@ export const deleteEducation = (id) => async (dispatch) => {
 export const deleteAccount = () => async (dispatch) => {
   if (window.confirm("Are you sure? This can NOT be undone!")) {
     try {
-       await axios.delete("/api/profile");
+      await axios.delete("/api/profile");
 
       dispatch({ type: CLEAR_PROFILE });
       dispatch({ type: ACCOUNT_DELETED });
