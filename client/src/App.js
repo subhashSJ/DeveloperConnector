@@ -16,12 +16,12 @@ import AddEducation from "./components/profile_forms/AddEducation";
 import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
 import Posts from "./components/posts/Posts";
+import Post from "./components/post/Post";
 
 //Redux
 import { Provider } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/auth";
-import Post from "./components/post/Post";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
