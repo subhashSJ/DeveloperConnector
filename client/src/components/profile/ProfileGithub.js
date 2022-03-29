@@ -8,7 +8,7 @@ const ProfileGithub = ({ username, getGithubRepos, repos }) => {
   useEffect(() => {
     getGithubRepos(username);
   }, [getGithubRepos, username]);
-
+  
   return (
     <div className="profile-github">
       <h2 className="text-primary my-1">Github Repos</h2>
@@ -33,13 +33,13 @@ const ProfileGithub = ({ username, getGithubRepos, repos }) => {
             <div>
               <ul>
                 <li className="badge badge-primary">
-                  Stars: {repos.stargazers_count}
+                  Stars: {repo.stargazers_count}
                 </li>
                 <li className="badge badge-dark">
-                  Watchers: {repos.watchers_count}
+                  Watchers: {repo.watchers_count}
                 </li>
                 <li className="badge badge-light">
-                  Forks: {repos.forks_count}
+                  Forks: {repo.forks_count}
                 </li>
               </ul>
             </div>

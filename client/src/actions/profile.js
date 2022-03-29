@@ -60,7 +60,7 @@ export const getProfileById = (userId) => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    dispatch(setAlert(err.response.data.msg, "danger"));
+    dispatch(setAlert("Page Not Found", "danger"));
     dispatch({
       type: PROFILE_ERROR,
       payload: { msg: err.response.data.msg, status: err.response.status },
