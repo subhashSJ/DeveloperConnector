@@ -1,0 +1,7 @@
+{
+    "mongoURI": "mongodb+srv://subhash_sj:subhash511@devconnector.3g4ui.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "jwtSecret": "subhash_sj",
+    "githubClientId": "0fd382c1a21b9da3a648",
+    "githubSecret": "e186bde4022115f020539dad844a86e6d7f8b97c"
+  }
+  
