@@ -15,6 +15,8 @@ const ProfileGithub = ({ username, getGithubRepos, repos }) => {
 
       {repos === null ? (
         <Spinner />
+      ) : repos.length === 0 ? (
+        <h1>No Github Repos Found</h1>
       ) : (
         repos.map((repo, index) => (
           <div key={index} className="repo bg-white p-1 my-1">
@@ -38,9 +40,7 @@ const ProfileGithub = ({ username, getGithubRepos, repos }) => {
                 <li className="badge badge-dark">
                   Watchers: {repo.watchers_count}
                 </li>
-                <li className="badge badge-light">
-                  Forks: {repo.forks_count}
-                </li>
+                <li className="badge badge-light">Forks: {repo.forks_count}</li>
               </ul>
             </div>
           </div>

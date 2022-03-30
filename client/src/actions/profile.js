@@ -8,6 +8,7 @@ import {
   ACCOUNT_DELETED,
   GET_PROFILES,
   GET_REPOS,
+  CLEAR_REPOS,
 } from "./types";
 
 // Get current user's profile
@@ -61,6 +62,7 @@ export const getProfileById = (userId) => async (dispatch) => {
     });
   } catch (err) {
     dispatch(setAlert("Page Not Found", "danger"));
+
     dispatch({
       type: PROFILE_ERROR,
       payload: { msg: err.response.data.msg, status: err.response.status },
@@ -78,10 +80,7 @@ export const getGithubRepos = (username) => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    dispatch({
-      type: PROFILE_ERROR,
-      payload: { msg: err.response.data.msg, status: err.response.status },
-    });
+    dispatch(setAlert(err.response.data.msg, "warning"));
   }
 };
 

@@ -9,10 +9,12 @@ import {
   UPDATE_LIKES,
   ADD_COMMENT,
   REMOVE_COMMENT,
+  CLEAR_REPOS
 } from "./types";
 
 // Get posts
 export const getPosts = () => async (dispatch) => {
+  dispatch({type: CLEAR_REPOS});
   try {
     const res = await axios.get("/api/posts");
 
