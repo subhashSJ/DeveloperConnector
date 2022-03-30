@@ -586,3 +586,13 @@ button {
     padding: 0.3rem 0.4rem;
   }
 }
+
+@media (max-width: 550px) {
+  .display-none-for-mobile{
+    display: none;
+  }
+  
+  .container {
+    padding: 0 0.5rem;
+  }
+}
